@@ -7,7 +7,7 @@ import matplotlib
 import numpy as np
 
 
-dog = Dog(measurement_var=500.5,process_var=70.0)
+dog = Dog(measurement_var=500.5,process_var=30.0)
 kal = One_D_Kalman()
 dt = 1 # 30 frames per second
 
@@ -30,7 +30,7 @@ patches = x_pos + sensor_pos + kalman_pos
 
 states_to_track = 3 # make this input to class
 lines = []
-plotcols = ["black","orange","blue"]
+plotcols = ["orange","white","black"]
 names = ['Actual Movement','Sensor Data','kalman_estimate']
 markers = ['_','o',',']
 # make lines of states to track
@@ -84,12 +84,12 @@ t1 = time()
 interval = 1000*dt - (t1-t0)
 
 
-ani = FuncAnimation(fig,animate,frames=200,interval=dt,init_func=init,repeat=False)
+ani = FuncAnimation(fig,animate,frames=201,interval=dt,init_func=init,repeat=False)
 
 
 
 plt.xlim(0,200)
-plt.ylim(0,250)
+plt.ylim(0,400)
 
 plt.xlabel('time s')
 plt.ylabel('position')
@@ -97,7 +97,8 @@ plt.ylabel('position')
 plt.legend()
 plt.show()
 
-
+plt.xlabel('time s')
+plt.ylabel('Variance m^2')
 plt.plot(var)
 plt.show()
 print('Variance converged to {:.3f}'.format(var[-1]))
