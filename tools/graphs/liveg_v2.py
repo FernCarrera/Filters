@@ -119,7 +119,8 @@ plt.xlim(0,200)
 plt.ylim(0,400)
 
 plt.xlabel('time s')
-plt.ylabel('position')
+plt.ylabel('position m')
+plt.title('Simulated Sensor Data')
 plt.legend()
 plt.show()
 
